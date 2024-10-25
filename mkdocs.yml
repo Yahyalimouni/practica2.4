@@ -15,6 +15,7 @@ theme:
     - search.share  
     - navigation.tracking  
 
+
   palette:
     scheme: slate
     primary: cyan
