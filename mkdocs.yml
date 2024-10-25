@@ -1,5 +1,6 @@
 site_name: Practica2.3 - Configuracion de Proxy Inverso
-nav:
+nav:  
+  - Home: https://yahyalimouni.github.io
   - Practica2.1: https://yahyalimouni.github.io/practica2/
   - Practica2.2: https://yahyalimouni.github.io/practica2.2/
   - Practica2.3: https://yahyalimouni.github.io/practica2.3/
