@@ -1,0 +1,714 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>Practica2.3 - Configuracion de Proxy Inverso</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#practica-24" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Practica2.3 - Configuracion de Proxy Inverso" class="md-header__button md-logo" aria-label="Practica2.3 - Configuracion de Proxy Inverso" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Practica2.3 - Configuracion de Proxy Inverso
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Practica 2.4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://yahyalimouni.github.io/practica2/" class="md-tabs__link">
+        
+  
+    
+  
+  Practica2.1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://yahyalimouni.github.io/practica2.2/" class="md-tabs__link">
+        
+  
+    
+  
+  Practica2.2
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://yahyalimouni.github.io/practica2.3/" class="md-tabs__link">
+        
+  
+    
+  
+  Practica2.3
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Practica2.3 - Configuracion de Proxy Inverso" class="md-nav__button md-logo" aria-label="Practica2.3 - Configuracion de Proxy Inverso" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Practica2.3 - Configuracion de Proxy Inverso
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://yahyalimouni.github.io/practica2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practica2.1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://yahyalimouni.github.io/practica2.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practica2.2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://yahyalimouni.github.io/practica2.3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Practica2.3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduccion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ajustar-el-nuevo-servidor-web-webserver2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajustar el nuevo servidor web (webserver2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ajustar el nuevo servidor web (webserver2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primero-vamos-a-cambiarle-el-nombre-al-archivo-de-conf-en-etcnginxsites-available-a-webserver2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primero vamos a cambiarle el nombre al archivo de conf en /etc/nginx/sites-available a webserver2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#luego-le-quitamos-el-link-simbolico-anterior-y-lo-volvemos-a-crear" class="md-nav__link">
+    <span class="md-ellipsis">
+      Luego le quitamos el link simbolico anterior y lo volvemos a crear:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y-ahora" class="md-nav__link">
+    <span class="md-ellipsis">
+      Y ahora:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Y ahora:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verificamos-la-sintaxis-con-el-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verificamos la sintaxis con el comando:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reiniciamos-el-servicio-de-nginx-con-el-comando" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reiniciamos el servicio de nginx con el comando:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificamos-su-configuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modificamos su configuracion:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modificamos su configuracion:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-ponemos-el-puerto-9090-y-la-cabezera-webserver2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le ponemos el puerto 9090, y la cabezera webserver2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurar-el-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configurar el PROXY:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configurar el PROXY:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-cambiamos-el-nombre-a-su-archivo-de-conf-en-etcnginxsites-available-por-balanceo-y-le-quitamos-el-link-simbolico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le cambiamos el nombre a su archivo de conf en /etc/nginx/sites-available por balanceo y le quitamos el link simbolico:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creamos-el-nuevo-link-simbolico-con-el-nuevo-nombre-y-mostramos-el-resultado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creamos el nuevo link simbolico con el nuevo nombre y mostramos el resultado:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuramos-el-archivo-de-configuracion-balanceo-para-que-pueda-distribuir-las-peticiones-aleatoriamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuramos el archivo de configuracion balanceo para que pueda distribuir las peticiones aleatoriamente:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hosts-anfitrion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hosts Anfitrion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hosts Anfitrion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ahora-ya-ponemos-la-ip-del-proxy-en-el-hosts-de-windows-que-se-encuentra-en" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ahora ya ponemos la ip del PROXY en el hosts de windows que se encuentra en:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navegador" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navegador
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navegador">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nos-metemos-en-el-navegador-de-la-maquina-anfitriona-y-hacemos-una-peticion-al-proxy-de-balanceo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nos metemos en el navegador de la maquina anfitriona y hacemos una peticion al proxy de balanceo.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nos metemos en el navegador de la maquina anfitriona y hacemos una peticion al proxy de balanceo.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fijamos-en-las-cabeceras-host-se-aprecia-que-la-primera-indica-webserver2-y-la-segunda-indica-balanceo-los-cuales-son-los-que-hemos-puesto-en-la-configuracion-de-ambos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fijamos en las cabeceras Host se aprecia que la primera indica webserver2, y la segunda indica balanceo. Los cuales son los que hemos puesto en la configuracion de ambos.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#se-ve-que-el-proxyha-dirigido-la-peticion-aleatoriamente-al-webserver2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Se ve que el PROXYha dirigido la peticion aleatoriamente al webserver2.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandamos-otra-peticion-al-proxy-y-pinchamos-f12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mandamos otra peticion al PROXY y pinchamos F12.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mandamos otra peticion al PROXY y pinchamos F12.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nos-metemos-en-la-seccion-de-network-vara-visualizar-las-cabezeras-de-la-respuesta" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nos metemos en la seccion de Network vara visualizar las cabezeras de la respuesta.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#y-ahora-se-nota-que-esta-vez-el-proxy-a-dirigido-la-peticion-a-webserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Y ahora se nota que esta vez el PROXY a dirigido la peticion a webserver.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="practica-24">Practica 2.4</h1>
+<h2 id="introduccion">Introduccion</h2>
+<p>En esta practica vamos a configurar un servidor Proxy para el balanceo de peticiones, primero clonamos la máquina de Debian donde tenemos, configurado nuestro servidor web de las prácticas anteriores, de esa forma tendremos 2 servidores web, y ademas del anterior que clonamos par el proxy.</p>
+<h2 id="ajustar-el-nuevo-servidor-web-webserver2">Ajustar el nuevo servidor web (webserver2)</h2>
+<h3 id="primero-vamos-a-cambiarle-el-nombre-al-archivo-de-conf-en-etcnginxsites-available-a-webserver2">Primero vamos a cambiarle el nombre al archivo de conf en <code>/etc/nginx/sites-available</code> a <code>webserver2</code> <br></h3>
+<p><img alt="01_cambiamos_elnombre_del_conf" src="assets/01_cambiamos_nombre_conf.png" /></p>
+<h3 id="luego-le-quitamos-el-link-simbolico-anterior-y-lo-volvemos-a-crear">Luego le quitamos el link simbolico anterior y lo volvemos a crear:</h3>
+<p><img alt="02_cambiar_conf_8080.png" src="assets/02_unlink_ln-s.png" /></p>
+<h3 id="y-ahora">Y ahora:</h3>
+<ul>
+<li>
+<h4 id="verificamos-la-sintaxis-con-el-comando">Verificamos la sintaxis con el comando:</h4>
+<pre><code>sudo nginx -t
+</code></pre>
+</li>
+<li>
+<h4 id="reiniciamos-el-servicio-de-nginx-con-el-comando">Reiniciamos el servicio de <code>nginx</code> con el comando:</h4>
+<pre><code>sudo systemctl restart nginx
+</code></pre>
+</li>
+</ul>
+<h3 id="modificamos-su-configuracion">Modificamos su configuracion:</h3>
+<h4 id="le-ponemos-el-puerto-9090-y-la-cabezera-webserver2">Le ponemos el puerto <code>9090</code>, y la cabezera <code>webserver2</code></h4>
+<p><img alt="03_borrar_link_simbolico_antiguo.png" src="assets/03_conf_webserver2.png" /></p>
+<h2 id="configurar-el-proxy">Configurar el <code>PROXY</code>:</h2>
+<h3 id="le-cambiamos-el-nombre-a-su-archivo-de-conf-en-etcnginxsites-available-por-balanceo-y-le-quitamos-el-link-simbolico">Le cambiamos el nombre a su archivo de conf en <code>/etc/nginx/sites-available</code> por <code>balanceo</code> y le quitamos el link simbolico:</h3>
+<p><img alt="png" src="assets/04_mv_unlink_proxy.png" /></p>
+<h3 id="creamos-el-nuevo-link-simbolico-con-el-nuevo-nombre-y-mostramos-el-resultado">Creamos el nuevo link simbolico con el nuevo nombre y mostramos el resultado:</h3>
+<p><img alt="png" src="assets/05_ln-s_ls-l.png" /></p>
+<h3 id="configuramos-el-archivo-de-configuracion-balanceo-para-que-pueda-distribuir-las-peticiones-aleatoriamente">Configuramos el archivo de configuracion <code>balanceo</code> para que pueda distribuir las peticiones <strong>aleatoriamente</strong>:</h3>
+<p><img alt="5_Nuevo_link" src="assets/06_conf_proxy_balanceo.png" /> <br></p>
+<ul>
+<li>
+<p><code>random</code>: Para elegir un server aleatoriamente de los indicados, en este caso son las IPs de webserver y webserver2.</p>
+</li>
+<li>
+<p><code>proxy_pass</code>: Para dirigir las peticiones a <code>backend_hosts</code> que se encarga de elegir aleatoriamente uno de los servidores.</p>
+</li>
+</ul>
+<h2 id="hosts-anfitrion">Hosts Anfitrion</h2>
+<h3 id="ahora-ya-ponemos-la-ip-del-proxy-en-el-hosts-de-windows-que-se-encuentra-en">Ahora ya ponemos la ip del <code>PROXY</code> en el hosts de windows que se encuentra en:</h3>
+<pre><code>    C:\Windows\System32\drivers\etc\hosts
+</code></pre>
+<h2 id="navegador">Navegador</h2>
+<h3 id="nos-metemos-en-el-navegador-de-la-maquina-anfitriona-y-hacemos-una-peticion-al-proxy-de-balanceo">Nos metemos en el navegador de la maquina anfitriona y hacemos una peticion al proxy de balanceo.</h3>
+<p><img alt="png" src="assets/07_Host_header_chrome.png" /></p>
+<h4 id="fijamos-en-las-cabeceras-host-se-aprecia-que-la-primera-indica-webserver2-y-la-segunda-indica-balanceo-los-cuales-son-los-que-hemos-puesto-en-la-configuracion-de-ambos">Fijamos en las cabeceras <code>Host</code> se aprecia que la primera indica <code>webserver2</code>, y la segunda indica <code>balanceo</code>. Los cuales son los que hemos puesto en la configuracion de ambos.</h4>
+<h4 id="se-ve-que-el-proxyha-dirigido-la-peticion-aleatoriamente-al-webserver2">Se ve que el <code>PROXY</code>ha dirigido la peticion aleatoriamente al <code>webserver2</code>.</h4>
+<h3 id="mandamos-otra-peticion-al-proxy-y-pinchamos-f12">Mandamos otra peticion al <code>PROXY</code> y pinchamos <code>F12</code>.</h3>
+<h4 id="nos-metemos-en-la-seccion-de-network-vara-visualizar-las-cabezeras-de-la-respuesta">Nos metemos en la seccion de <code>Network</code> vara visualizar las cabezeras de la respuesta.</h4>
+<p><img alt="png" src="assets/08_Host_header_chrome_webserver.png" /></p>
+<h4 id="y-ahora-se-nota-que-esta-vez-el-proxy-a-dirigido-la-peticion-a-webserver">Y ahora se nota que esta vez el <code>PROXY</code> a dirigido la peticion a <code>webserver</code>.</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.top", "search.highlight", "search.share", "navigation.tracking"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
