@@ -1,0 +1,20 @@
+site_name: Practica2.3 - Configuracion de Proxy Inverso
+nav:
+  - Practica2.1: https://yahyalimouni.github.io/practica2/
+  - Practica2.2: https://yahyalimouni.github.io/practica2.2/
+  - Practica2.3: https://yahyalimouni.github.io/practica2.3/
+
+
+theme:
+  name: material  # Use Material theme for MkDocs
+  features:
+    - navigation.tabs  # Enable tab navigation
+    - navigation.top  # Show navigation at the top
+    - search.highlight  
+    - search.share  
+    - navigation.tracking  
+
+  palette:
+    scheme: slate
+    primary: cyan
+    accent: indigo
